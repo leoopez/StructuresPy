@@ -9,13 +9,13 @@ class TreeNode:
         return str(self.data)
 
 
-class Btree:
-    def __init__(self, values):
+class BinaryTree:
+    def __init__(self, values=None):
         self.root = None
         for v in values:
             self.insert(TreeNode(v))
 
-    def search(self, key) -> TreeNode:
+    def search(self, key) -> object:
         node = self.root
         while node is not None and node.data != key:
             if node.data > key:
@@ -28,10 +28,8 @@ class Btree:
         if self.root is None:
             self.root = node
             return
-
-        par = TreeNode()
         pos = self.root
-
+        par = pos
         while pos is not None:
             par = pos
             if pos.data < node.data:
@@ -145,7 +143,7 @@ if __name__ == "__main__":
     values_ = [6, 4, 8, 2, 5, 7, 9, 1, 3]
     nodes = []
 
-    tree_ = Btree(values_)
+    tree_ = BinaryTree(values_)
     print_in_order(tree_)
 
     tree_.remove(tree_.root)
